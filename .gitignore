@@ -1,0 +1,38 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+.env/
+.venv/
+env/
+venv/
+
+# macOS system files
+.DS_Store
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Model files
+*.pkl
+*.h5
+*.joblib
+
+# CSV data and intermediate results
+*.csv
+
+# Folders with generated outputs (ignored, but keep folder structure)
+data/*
+training_results/*
+testing_results/*
+
+# Keep these empty folders in Git
+!data/.gitkeep
+!training_results/.gitkeep
+!testing_results/.gitkeep
