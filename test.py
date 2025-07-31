@@ -35,7 +35,7 @@ def test_model(X_test, y_test, case_id_test, classifier, scaler=None):
     accuracy = accuracy_score(y_test, y_pred)
     precision = precision_score(y_test, y_pred)
     recall = recall_score(y_test, y_pred)
-    f1 = f1_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred, average="macro")
     auc = roc_auc_score(y_test, y_prob)
 
     # Return results dictionary
@@ -44,7 +44,7 @@ def test_model(X_test, y_test, case_id_test, classifier, scaler=None):
             "accuracy": accuracy,
             "precision": precision,
             "recall": recall,
-            "f1": f1,
+            "f1_score": f1,
             "auc": auc,
         },
         "y_true": y_test,

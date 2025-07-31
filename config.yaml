@@ -1,18 +1,23 @@
 models:
   - name: RF
     params:
-      n_estimators: 200
-      max_depth: 10
-  # - name: RF
-  #   params:
-  #     n_estimators: 100
-  #     max_depth: 10
+      n_estimators: [100, 200] # 2 options
+      max_depth: [5, 7, 10] # 3 options - shallow to medium depth
+      min_samples_split: [10, 20] # 2 options - prevent overfitting
+      min_samples_leaf: [5, 10] # 2 options - leaf size control
+      max_features: ["sqrt", 0.3] # 2 options - feature sampling
+
   - name: XGB
     params:
-      n_estimators: 150
-      learning_rate: 0.05
-      max_depth: 6
+      n_estimators: [100, 150] # 2 options
+      learning_rate: [0.05, 0.1] # 2 options - moderate learning
+      max_depth: [3, 4, 5] # 3 options - shallow trees
+      subsample: [0.8, 0.9] # 2 options - row sampling
+      colsample_bytree: [0.6, 0.8] # 2 options - feature sampling
+      reg_lambda: [1, 1.5] # 2 options - L2 regularization
+
   - name: SVM
     params:
-      C: 1.0
-      gamma: "scale"
+      C: [0.1, 1.0, 10.0, 100.0] # Regularization parameter
+      gamma: ["scale", "auto", 0.001, 0.01, 0.1] # RBF kernel parameter
+      kernel: ["rbf", "linear"] # Kernel types

@@ -42,7 +42,7 @@ def train_and_evaluate_model(X, y, case_id, classifier, n_splits=5):
         "precision": [],
         "recall": [],
         "f1_score": [],
-        "auc_roc": [],
+        "auc": [],
     }
 
     # Store predictions, true labels, probabilities, and case IDs
@@ -79,18 +79,18 @@ def train_and_evaluate_model(X, y, case_id, classifier, n_splits=5):
         y_prob = clf.predict_proba(X_val)[:, 1]
 
         # Calculate metrics
-        accuracy = accuracy_score(y_val, y_pred)
-        precision = precision_score(y_val, y_pred)
-        recall = recall_score(y_val, y_pred)
-        f1 = f1_score(y_val, y_pred)
-        auc = roc_auc_score(y_val, y_prob)
+        accuracy = round(accuracy_score(y_val, y_pred), 3)
+        precision = round(precision_score(y_val, y_pred), 3)
+        recall = round(recall_score(y_val, y_pred), 3)
+        f1 = round(f1_score(y_val, y_pred, average="macro"), 3)
+        auc = round(roc_auc_score(y_val, y_prob), 3)
 
         # Store metrics
         metrics["accuracy"].append(accuracy)
         metrics["precision"].append(precision)
         metrics["recall"].append(recall)
         metrics["f1_score"].append(f1)
-        metrics["auc_roc"].append(auc)
+        metrics["auc"].append(auc)
 
         # Store fold-level metrics
         fold_metrics_data.append(
@@ -100,7 +100,7 @@ def train_and_evaluate_model(X, y, case_id, classifier, n_splits=5):
                 "Precision": precision,
                 "Recall": recall,
                 "F1_Score": f1,
-                "AUC_ROC": auc,
+                "AUC": auc,
             }
         )
 
