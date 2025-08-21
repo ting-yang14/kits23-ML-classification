@@ -206,7 +206,8 @@ main() {
     local failed_datasets=0
     
     # Process each CSV file
-    for data_path in "$DATA_DIR"/2D_*.csv; do
+    # NOTE: The CSV file should be modified as the input feature table for training
+    for data_path in "$DATA_DIR"/3D_Tumor_Radiomics.csv; do
         # Skip if no files match (in case of empty directory)
         [ -f "$data_path" ] || continue
         

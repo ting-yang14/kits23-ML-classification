@@ -4,7 +4,7 @@ import os
 import yaml
 import pickle
 from itertools import product
-from preprocess import preprocess_data
+from preprocess import preprocess_radiomics_data
 from train_evaluate import train_and_evaluate_model
 from visualize import plot_roc_curve, plot_test_roc_curve, plot_confusion_matrix
 from test import test_model
@@ -185,8 +185,8 @@ def main():
     args = parser.parse_args()
 
     # Load data
-    X_train, X_test, y_train, y_test, case_id_train, case_id_test = preprocess_data(
-        args.data_path
+    X_train, X_test, y_train, y_test, case_id_train, case_id_test = (
+        preprocess_radiomics_data(args.data_path)
     )
 
     if args.mode == "train":
